@@ -2,9 +2,15 @@ cmake_minimum_required(VERSION 3.9)
 
 # Qt5
 find_package(Qt5 COMPONENTS Core Network REQUIRED)
-
+if (NOT UNIX AND NOT APPLE)
+set(CMAKE_PREFIX_PATH
+	"C:/protobuf-3.8.0"
+	"${CMAKE_PREFIX_PATH}"
+	)
+endif()
 #protobuf
 find_package(Protobuf REQUIRED)
+message(Protobuf_INCLUDE_DIRS " ${Protobuf_INCLUDE_DIRS}")
 function(get_pb_file H CPP)
 	list(APPEND PH ${ARGN})
 	list(APPEND PC ${ARGN})
@@ -32,6 +38,9 @@ FOREACH(FIL ${PROTO_FILES})
 ENDFOREACH()
 
 #python
+if (NOT UNIX AND NOT APPLE)
+  set(BOOST_ROOT C:/boost)
+endif()
 find_package(PythonInterp)
 if (PYTHONINTERP_FOUND)
   if (UNIX AND NOT APPLE)
@@ -62,6 +71,7 @@ endif()
 INCLUDE_DIRECTORIES(
 	${Boost_INCLUDE_DIRS}
 	${PYTHON_INCLUDE_DIRS}
+                ${Protobuf_INCLUDE_DIRS}
 	${Qt5Core_INCLUDE_DIRS}
 	${CMAKE_SOURCE_DIR}/src
 	${CMAKE_BINARY_DIR}/proto

@@ -1,6 +1,8 @@
 #include <boost/python.hpp>
 #include "CommandInterface.h"
 
+#define BOOST_PYTHON_STATIC_LIB
+
 using namespace boost::python;
 
 BOOST_PYTHON_MODULE(cmdItf) {
