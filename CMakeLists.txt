@@ -94,7 +94,7 @@ file(GLOB CPPFILES
 	"${CMAKE_SOURCE_DIR}/src/*.cpp"
 )
 
-add_library(cmdItf SHARED
+add_library(cmdIf SHARED
 	pymodule.cc
 	CommandInterface.cpp
 	${PROTO_CPP}
@@ -102,9 +102,9 @@ add_library(cmdItf SHARED
 	${CPPFILES}
 )
 
-set_target_properties(cmdItf PROPERTIES PREFIX "")
+set_target_properties(cmdIf PROPERTIES PREFIX "")
 
-target_link_libraries(cmdItf
+target_link_libraries(cmdIf
 	boost_python
     ${BOOST_LIBRARIES}
     ${PYTHON_LIBARIES}

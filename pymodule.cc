@@ -5,7 +5,7 @@
 
 using namespace boost::python;
 
-BOOST_PYTHON_MODULE(cmdItf) {
+BOOST_PYTHON_MODULE(cmdIf) {
     def("init", cmdInit);
     def("setSpeed", setSpeed);
     def("setKick", setKick);
